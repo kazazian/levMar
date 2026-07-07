@@ -68,7 +68,7 @@ body {
 
 .hero__content {
   text-align: center;
-  padding: clamp(18px, 5vw, 28px) 24px 0;
+  padding: clamp(18px, 22vw, 80px) 24px 0;
 }
 
 .hero__eyebrow {
@@ -223,10 +223,92 @@ body {
   
 }
 
-.invite__calendar {
-  width: 109%;
-  padding-left: 18px;
-  max-width: 460px;
+.cal-wrap {
+  position: relative;
+  max-width: 380px;
+  margin: 26px auto 0;
+}
+
+.cal__tape-top {
+  position: relative;
+  z-index: 2;
+  width: 110px;
+  margin: 0 auto -16px;
+}
+
+.cal__tape-top img {
+  width: 100%;
+  display: block;
+}
+
+.cal__tape-bottom {
+  position: absolute;
+  right: -6px;
+  bottom: -16px;
+  z-index: 2;
+  width: 110px;
+  transform: rotate(-30deg);
+}
+
+.cal__tape-bottom img {
+  width: 140%;
+  display: block;
+}
+
+.cal {
+  position: relative;
+  background: #fff;
+}
+
+.cal__header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: #c61d5a;
+}
+
+.cal__header span {
+  padding: 12px 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(10px, 2.6vw, 12px);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #fff;
+  text-align: center;
+}
+
+.cal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.cal__grid span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  font-family: var(--font-body);
+  font-size: clamp(13px, 3.6vw, 17px);
+  color: #494949;
+}
+
+.cal__day--heart {
+  position: relative;
+}
+
+.cal__heart-icon {
+  position: absolute;
+  width: 80%;
+  padding-right: 2px;
+  height: auto;
+  max-width: none;
+}
+
+.cal__grid .cal__day-num {
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+  color: #fff;
 }
 
 .torn-edge {
@@ -295,7 +377,7 @@ body {
   position: relative;
   z-index: 1;
   width: 90%;
-  margin-bottom: clamp(90px, 24vw, 130px);
+  margin-bottom: clamp(130px, 32vw, 170px);
 }
 
 .timing__item--1,
@@ -430,12 +512,6 @@ body {
   padding: 0 4px clamp(40px, 10vw, 5px);
 }
 
-.dresscode__tape {
-  position: relative;
-  z-index: 2;
-  margin: 0 auto -16px;
-}
-
 .dresscode__panel {
   position: relative;
   text-align: center;
@@ -523,7 +599,7 @@ body {
   position: relative;
   max-width: 430px;
   margin: clamp(50px, 12vw, 66px) auto 0;
-  padding: 78px 34px 58px;
+  padding: clamp(70px, 20vw, 78px) clamp(20px, 6vw, 34px) clamp(50px, 15vw, 58px);
 }
 
 .details__note-bg {
@@ -543,7 +619,6 @@ body {
   line-height: 1.6;
   color: var(--ink);
   text-align: center;
-  padding-top: 50px;
 }
 
 /* ---------- SECTION 6: OUTRO ---------- */
