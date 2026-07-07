@@ -149,7 +149,7 @@ body {
 }
 
 .marquee {
-  background: var(--pink);
+  background-color: #C61D5A;
   overflow: hidden;
   white-space: nowrap;
   padding: 13px 0;
@@ -264,7 +264,7 @@ body {
 .timing__title {
   font-family: var(--font-heading);
   font-weight: 600;
-  font-style: italic;
+
   font-size: clamp(30px, 8.4vw, 38px);
   text-transform: uppercase;
   color: var(--pink);
@@ -416,7 +416,6 @@ body {
 .venue__dresscode-title {
   font-family: var(--font-heading);
   font-weight: 600;
-  font-style: italic;
   font-size: clamp(28px, 7.6vw, 34px);
   text-transform: uppercase;
   color: var(--pink);
@@ -483,7 +482,6 @@ body {
 .details__title {
   font-family: var(--font-heading);
   font-weight: 600;
-  font-style: italic;
   font-size: clamp(28px, 7.6vw, 34px);
   text-transform: uppercase;
   color: var(--pink);
