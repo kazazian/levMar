@@ -9,11 +9,56 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<div class="intro" id="intro">
+  <svg class="intro__folds" viewBox="0 0 400 700" preserveAspectRatio="none">
+    <defs>
+      <filter id="foldShadow" x="-30%" y="-30%" width="160%" height="160%">
+        <feDropShadow dx="1.5" dy="2.5" stdDeviation="2" flood-color="#000" flood-opacity="0.35"/>
+      </filter>
+    </defs>
+    <g fill="none" stroke="#33452f" stroke-width="2" filter="url(#foldShadow)">
+      <path d="M50,0 Q15,20 30,45 C80,110 150,250 200,350"/>
+      <path d="M350,0 Q385,20 370,45 C320,110 250,250 200,350"/>
+      <path d="M50,700 Q15,680 30,655 C80,590 150,450 200,350"/>
+      <path d="M350,700 Q385,680 370,655 C320,590 250,450 200,350"/>
+    </g>
+  </svg>
+  <div class="intro__content">
+    <p class="intro__lead">С удовольствием приглашаем вас разделить<br>важный момент нашей жизни —</p>
+    <h2 class="intro__title">Нашу свадьбу!</h2>
+  </div>
+  <button class="intro__seal" id="intro-seal" type="button" aria-label="Открыть приглашение">
+    <img class="intro__seal-img" src="ci.png" alt="">
+  </button>
+  <div class="intro__cta-wrap">
+    <svg class="intro__arrow" viewBox="0 0 70 60" fill="none">
+      <path d="M2 54C20 50 40 34 60 10" stroke="#f3ebc0" stroke-width="1.5" fill="none"/>
+      <path d="M46 8L62 8L60 24" stroke="#f3ebc0" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <p class="intro__cta">нажать</p>
+  </div>
+</div>
+
+<audio id="bg-music" src="music.mp3" loop preload="none"></audio>
+
+<button class="sound-toggle" id="sound-toggle" type="button" aria-label="Выключить звук">
+  <svg class="sound-toggle__icon sound-toggle__icon--on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11 5 6 9H2v6h4l5 4V5z"/>
+    <path d="M15.5 8.5a5 5 0 0 1 0 7"/>
+    <path d="M18.5 5.5a9 9 0 0 1 0 13"/>
+  </svg>
+  <svg class="sound-toggle__icon sound-toggle__icon--off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11 5 6 9H2v6h4l5 4V5z"/>
+    <line x1="23" y1="9" x2="17" y2="15"/>
+    <line x1="17" y1="9" x2="23" y2="15"/>
+  </svg>
+</button>
+
 <div class="page">
 
   <!-- SECTION 1 — HERO -->
   <section class="section hero" id="hero">
-    <div class="heart-line heart-line--hero" data-heart-line>
+    <div class="heart-line heart-line--hero" data-heart-static="0.5">
       <svg class="heart-line__svg" viewBox="0 0 430 103" preserveAspectRatio="none">
         <path class="heart-line__path" d="M436 101.097C371.498 53.9295 312.848 43.2937 291.586 43.8718C243.822 58.2066 218.613 76.0484 211.979 83.1775C176.054 107.686 119.786 87.2237 96.1419 73.929C59.8087 60.981 10.2418 19.9793 -10 1.09692" stroke="#4F6B4F" stroke-width="3" fill="none"/>
       </svg>
@@ -37,10 +82,8 @@
     </div>
 
     <div class="hero__photo-wrap">
-      <div class="hero__hill">
-        <img src="green2.svg" alt="">
-      </div>
-      <img class="hero__photo" src="Mariam.png" alt="Мариам в детстве">
+
+      <img class="hero__photo" src="ml.png" alt="Мариам в детстве">
     </div>
 
     <div class="marquee">
@@ -78,7 +121,7 @@
               <span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span>
               <span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span>
               <span>24</span><span>25</span><span>26</span>
-              <span class="cal__day--heart"><img src="heart.png" alt="" class="cal__heart-icon"><span class="cal__day-num">27</span></span>
+              <span class="cal__day--heart"><span class="cal__heart-icon"></span><span class="cal__day-num">27</span></span>
               <span>28</span><span>29</span><span>30</span>
               <span>31</span>
             </div>
@@ -99,7 +142,7 @@
     <h2 class="timing__title">Тайминг</h2>
 
     <div class="timing__track">
-      <div class="heart-line heart-line--timing" data-heart-line>
+      <div class="heart-line heart-line--timing" data-heart-line data-heart-speed="1.6">
         <svg class="heart-line__svg heart-line__svg--big" viewBox="0 0 335 657" preserveAspectRatio="none">
           <path class="heart-line__path" d="M20.1556 0.362915C6.64078 54.5663 13.394 80.1984 26.4747 106.597C70.4284 163.323 185.736 148.037 237.895 133.303C307.354 107.518 326.354 177.812 327.171 216.182C316.968 310.48 182.191 296.018 165.297 297.219C59.619 304.736 45.6822 308.905 28.1679 323.498C-10.6809 355.868 -9.87994 437.465 49.1839 454.143C77.7152 463.176 146.821 471.573 174.618 471.266C250.34 470.43 290.054 472.905 295.937 474.295C337.652 484.149 335.838 535.421 331.096 563.354C323.248 602.399 281.402 602.061 261.127 598.685C196.899 587.989 170.718 608.921 165.813 628.566V656.363" stroke="#4F6B4F" stroke-width="3" fill="none"/>
         </svg>
@@ -139,7 +182,7 @@
 
     <div class="heart-line heart-line--divider" data-heart-line>
       <svg class="heart-line__svg" viewBox="0 0 430 103" preserveAspectRatio="none">
-        <path class="heart-line__path" d="M436 101.097C371.498 53.9295 312.848 43.2937 291.586 43.8718C243.822 58.2066 218.613 76.0484 211.979 83.1775C176.054 107.686 119.786 87.2237 96.1419 73.929C59.8087 60.981 10.2418 19.9793 -10 1.09692" stroke="#4F6B4F" stroke-width="3" fill="none"/>
+        <path class="heart-line__path" d="M440 50C400 10 360 10 330 45C300 80 260 80 230 45C200 10 160 10 130 45C100 80 60 80 30 45C10 25 0 40 -10 90" stroke="#4F6B4F" stroke-width="4" fill="none"/>
       </svg>
       <img class="heart-line__heart" src="heart.png" alt="">
     </div>
@@ -167,7 +210,7 @@
 
     <div class="heart-line heart-line--divider" data-heart-line>
       <svg class="heart-line__svg" viewBox="0 0 430 103" preserveAspectRatio="none">
-        <path class="heart-line__path" d="M436 101.097C371.498 53.9295 312.848 43.2937 291.586 43.8718C243.822 58.2066 218.613 76.0484 211.979 83.1775C176.054 107.686 119.786 87.2237 96.1419 73.929C59.8087 60.981 10.2418 19.9793 -10 1.09692" stroke="#4F6B4F" stroke-width="3" fill="none"/>
+        <path class="heart-line__path" d="M-10 1.09692C10.2418 19.9793 59.8087 60.981 96.1419 73.929C119.786 87.2237 176.054 107.686 211.979 83.1775C218.613 76.0484 243.822 58.2066 291.586 43.8718C312.848 43.2937 371.498 53.9295 436 101.097" stroke="#4F6B4F" stroke-width="4" fill="none"/>
       </svg>
       <img class="heart-line__heart" src="heart.png" alt="">
     </div>
@@ -187,7 +230,7 @@
 
   <!-- SECTION 5 — ДРЕСС-КОД ДЕТАЛИ / ДЕТАЛИ -->
   <section class="section details" id="details">
-    <p class="details__rule">Для девушек пожалуйста, не надевайте белые платья</p>
+    <p class="details__rule">Девушки, пожалуйста, не надевайте белые платья</p>
     <img class="heart-icon" src="heart.png" alt="">
     <p class="details__rule">Мужчины, вам подойдут классические костюмы чёрного или серого цвета, а также белые рубашки, не сомневайтесь.</p>
 
@@ -218,6 +261,6 @@
 
 </div>
 
-<script src="js/main.js"></script>
+<script src="js/main.js?v=2"></script>
 </body>
 </html>

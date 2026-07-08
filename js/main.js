@@ -5,24 +5,66 @@
     return Math.min(max, Math.max(min, value));
   }
 
+  function placeHeart(item, progress) {
+    var point = item.path.getPointAtLength(progress * item.length);
+
+    var svgRect = item.svg.getBoundingClientRect();
+    var viewBox = item.svg.viewBox.baseVal;
+    var rect = item.wrapper.getBoundingClientRect();
+    var scaleX = svgRect.width / viewBox.width;
+    var scaleY = svgRect.height / viewBox.height;
+
+    var offsetX = svgRect.left - rect.left;
+    var offsetY = svgRect.top - rect.top;
+
+    var x = offsetX + (point.x - viewBox.x) * scaleX;
+    var y = offsetY + (point.y - viewBox.y) * scaleY;
+
+    var heartW = item.heart.offsetWidth;
+    var heartH = item.heart.offsetHeight;
+
+    item.heart.style.transform =
+      'translate(' + (x - heartW / 2) + 'px,' + (y - heartH / 2) + 'px)';
+  }
+
+  function buildItem(wrapper) {
+    var path = wrapper.querySelector('.heart-line__path');
+    var heart = wrapper.querySelector('.heart-line__heart');
+    var svg = wrapper.querySelector('.heart-line__svg');
+    if (!path || !heart || !svg) return null;
+    var speed = parseFloat(wrapper.getAttribute('data-heart-speed'));
+    if (isNaN(speed)) speed = 1;
+    return {
+      wrapper: wrapper,
+      path: path,
+      heart: heart,
+      svg: svg,
+      length: path.getTotalLength(),
+      speed: speed,
+    };
+  }
+
+  function setupStaticHearts() {
+    var wrappers = Array.prototype.slice.call(document.querySelectorAll('[data-heart-static]'));
+
+    wrappers.forEach(function (wrapper) {
+      var item = buildItem(wrapper);
+      if (!item) return;
+      var progress = parseFloat(wrapper.getAttribute('data-heart-static'));
+      if (isNaN(progress)) progress = 0.5;
+      placeHeart(item, progress);
+      window.addEventListener('resize', function () {
+        placeHeart(item, progress);
+      });
+    });
+  }
+
   function setupHeartLines() {
     var wrappers = Array.prototype.slice.call(document.querySelectorAll('[data-heart-line]'));
 
-    var items = wrappers
-      .map(function (wrapper) {
-        var path = wrapper.querySelector('.heart-line__path');
-        var heart = wrapper.querySelector('.heart-line__heart');
-        var svg = wrapper.querySelector('.heart-line__svg');
-        if (!path || !heart || !svg) return null;
-        return {
-          wrapper: wrapper,
-          path: path,
-          heart: heart,
-          svg: svg,
-          length: path.getTotalLength(),
-        };
-      })
-      .filter(Boolean);
+    var items = wrappers.map(buildItem).filter(Boolean);
+
+    setupStaticHearts();
 
     if (!items.length) return;
 
@@ -33,26 +75,9 @@
         var rect = item.wrapper.getBoundingClientRect();
         var total = rect.height + vh;
         var scrolled = vh - rect.top;
-        var progress = clamp(scrolled / total, 0, 1);
+        var progress = clamp((scrolled / total) * item.speed, 0, 1);
 
-        var point = item.path.getPointAtLength(progress * item.length);
-
-        var svgRect = item.svg.getBoundingClientRect();
-        var viewBox = item.svg.viewBox.baseVal;
-        var scaleX = svgRect.width / viewBox.width;
-        var scaleY = svgRect.height / viewBox.height;
-
-        var offsetX = svgRect.left - rect.left;
-        var offsetY = svgRect.top - rect.top;
-
-        var x = offsetX + (point.x - viewBox.x) * scaleX;
-        var y = offsetY + (point.y - viewBox.y) * scaleY;
-
-        var heartW = item.heart.offsetWidth;
-        var heartH = item.heart.offsetHeight;
-
-        item.heart.style.transform =
-          'translate(' + (x - heartW / 2) + 'px,' + (y - heartH / 2) + 'px)';
+        placeHeart(item, progress);
       });
 
       ticking = false;
@@ -71,9 +96,41 @@
     update();
   }
 
+  function setupIntro() {
+    var intro = document.getElementById('intro');
+    var seal = document.getElementById('intro-seal');
+    var music = document.getElementById('bg-music');
+    var soundToggle = document.getElementById('sound-toggle');
+    if (!intro || !seal) return;
+
+    document.documentElement.classList.add('intro-lock');
+
+    seal.addEventListener('click', function () {
+      intro.classList.add('is-hidden');
+      document.documentElement.classList.remove('intro-lock');
+      window.dispatchEvent(new Event('resize'));
+
+      if (music) {
+        music.play().catch(function () {});
+      }
+      if (soundToggle) {
+        soundToggle.classList.add('is-visible');
+      }
+    });
+
+    if (music && soundToggle) {
+      soundToggle.addEventListener('click', function () {
+        music.muted = !music.muted;
+        soundToggle.classList.toggle('is-muted', music.muted);
+      });
+    }
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', setupHeartLines);
+    document.addEventListener('DOMContentLoaded', setupIntro);
   } else {
     setupHeartLines();
+    setupIntro();
   }
 })();
