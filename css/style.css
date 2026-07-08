@@ -244,7 +244,7 @@ html.intro-lock body {
 
 .hero__content {
   text-align: center;
-  padding: clamp(18px, 22vw, 80px) 24px 0;
+  padding: clamp(18px, 22vw, 110px) 24px 0;
 }
 
 .hero__eyebrow {
@@ -264,7 +264,7 @@ html.intro-lock body {
   text-transform: uppercase;
   color: var(--pink);
   line-height: 1;
-  margin-top: 6px;
+  margin-top: 14px;
   white-space: nowrap;
 }
 
@@ -272,7 +272,7 @@ html.intro-lock body {
   display: flex;
   justify-content: center;
   gap: clamp(24px, 15vw, 102px);
-  margin-top: clamp(26px, 17vw, 100px);
+  margin-top: clamp(26px, 21vw, 200px);
   text-align: left;
   margin-bottom: -30px;
 }
