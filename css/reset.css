@@ -20,7 +20,7 @@ body {
 img,
 svg {
   display: block;
-  max-width: 150%;
+  max-width: 200%;
 }
 
 a {

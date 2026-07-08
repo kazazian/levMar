@@ -45,7 +45,7 @@ html.intro-lock body {
   left: 50%;
   top: 0;
   transform: translateX(-50%);
-  width: 130%;
+  width: 190%;
   height: 100%;
   z-index: 0;
 }
@@ -239,7 +239,7 @@ html.intro-lock body {
 }
 
 .heart-line--hero .heart-line__svg {
-  width: 100%;
+  width: 101%;
 }
 
 .hero__content {
