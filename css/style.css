@@ -125,7 +125,7 @@ html.intro-lock body {
 .intro__arrow {
   width: clamp(40px, 9vw, 100px);
   height: auto;
-  margin-top: 112px;
+  margin-top: 51px;
   margin-right: -23px;
 }
 
