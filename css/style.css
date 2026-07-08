@@ -229,13 +229,13 @@ html.intro-lock body {
 
 .hero {
   background: var(--cream);
-  padding-top: clamp(28px, 8vw, 40px);
+  padding-top: clamp(28px, calc(0.08 * min(100vw, 480px)), 40px);
 }
 
 .heart-line--hero {
   max-width: 450px;
   margin: 0 auto;
-  height: clamp(60px, 16vw, 75px);
+  height: clamp(60px, calc(0.16 * min(100vw, 480px)), 75px);
 }
 
 .heart-line--hero .heart-line__svg {
@@ -244,13 +244,13 @@ html.intro-lock body {
 
 .hero__content {
   text-align: center;
-  padding: clamp(18px, 31vw, 210px) 24px 0;
+  padding: clamp(18px, calc(0.31 * min(100vw, 480px)), 210px) 24px 0;
 }
 
 .hero__eyebrow {
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: clamp(15px, 4vw, 18px);
+  font-size: clamp(15px, calc(0.04 * min(100vw, 480px)), 18px);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink);
@@ -260,7 +260,7 @@ html.intro-lock body {
   font-family: var(--font-heading);
   font-weight: 600;
   font-style: italic;
-  font-size: clamp(26px, 8.6vw, 46px);
+  font-size: clamp(26px, calc(0.086 * min(100vw, 480px)), 46px);
   text-transform: uppercase;
   color: var(--pink);
   line-height: 1;
@@ -271,8 +271,8 @@ html.intro-lock body {
 .hero__quotes {
   display: flex;
   justify-content: center;
-  gap: clamp(24px, 15vw, 102px);
-  margin-top: clamp(26px, 21vw, 200px);
+  gap: clamp(24px, calc(0.15 * min(100vw, 480px)), 102px);
+  margin-top: clamp(26px, calc(0.21 * min(100vw, 480px)), 200px);
   text-align: left;
   margin-bottom: -30px;
 }
@@ -287,14 +287,14 @@ html.intro-lock body {
 
 .hero__phrase {
   font-family: var(--font-script);
-  font-size: clamp(16px, 4.4vw, 19px);
+  font-size: clamp(16px, calc(0.044 * min(100vw, 480px)), 19px);
   color: var(--ink);
   line-height: 1.3;
 }
 
 .hero__photo-wrap {
   position: relative;
-  margin-top: clamp(20px, 6vw, 32px);
+  margin-top: clamp(20px, calc(0.06 * min(100vw, 480px)), 32px);
 }
 
 .hero__hill {
@@ -303,7 +303,7 @@ html.intro-lock body {
   left: 0;
   width: 100%;
   rotate: 180deg;
-  height: clamp(70px, 17vw, 110px);
+  height: clamp(70px, calc(0.17 * min(100vw, 480px)), 110px);
   overflow: hidden;
   z-index: 1;
 }
