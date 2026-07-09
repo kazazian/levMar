@@ -246,7 +246,7 @@
 
     <p class="details__rule">Девушки, пожалуйста, не надевайте белые платья</p>
     <img class="heart-icon" src="heart.png" alt="">
-    <p class="details__rule">Мужчины, вам подойдут классические костюмы, а также белые рубашки, не сомневайтесь.</p>
+    <p class="details__rule">Мужчины, вам подойдут классические костюмы, а также белые рубашки, не сомневайтесь</p>
 
     
 
@@ -254,7 +254,67 @@
       <img class="details__note-bg" src="note.svg" alt="">
       <p>Пожалуйста, подтвердите своё присутствие до 1 августа, чтобы мы могли планировать нашу свадьбу наилучшим образом</p>
     </div>
+
+    <button class="rsvp-btn" id="rsvp-open" type="button">Подтвердить присутствие</button>
   </section>
+
+  <div class="rsvp-modal" id="rsvp-modal">
+    <div class="rsvp-modal__overlay" id="rsvp-overlay"></div>
+    <div class="rsvp-modal__panel">
+      <button class="rsvp-modal__close" id="rsvp-close" type="button" aria-label="Закрыть">&times;</button>
+
+      <div id="rsvp-form-wrap">
+        <h3 class="rsvp-modal__title">Подтвердите ваше присутствие</h3>
+        <p class="rsvp-modal__subtitle">Пожалуйста, чтобы всё прошло идеально, ответьте на несколько вопросов</p>
+
+        <form class="rsvp-form" id="rsvp-form">
+          <label class="rsvp-form__label">
+            Ваше имя и фамилия
+            <input class="rsvp-form__input" type="text" name="fullname" required>
+          </label>
+
+          <label class="rsvp-form__label">
+            Подтвердите ваше присутствие
+            <select class="rsvp-form__select" name="attendance">
+              <option>Обязательно буду</option>
+              <option>Скорее всего буду</option>
+              <option>Не смогу прийти</option>
+            </select>
+          </label>
+
+          <label class="rsvp-form__label">
+            Будете ли Вы одни или с парой?
+            <select class="rsvp-form__select" name="companion">
+              <option>Буду один / одна</option>
+              <option>Буду с парой</option>
+            </select>
+          </label>
+
+          <fieldset class="rsvp-form__fieldset">
+            <legend>Укажите Ваше предпочтение по напиткам</legend>
+            <label class="rsvp-form__checkbox"><input type="checkbox" name="drinks" value="none"> Не пью</label>
+            <label class="rsvp-form__checkbox"><input type="checkbox" name="drinks" value="champagne"> Шампанское</label>
+            <label class="rsvp-form__checkbox"><input type="checkbox" name="drinks" value="red"> Вино красное</label>
+            <label class="rsvp-form__checkbox"><input type="checkbox" name="drinks" value="white"> Вино белое</label>
+            <label class="rsvp-form__checkbox"><input type="checkbox" name="drinks" value="cognac"> Коньяк</label>
+            <label class="rsvp-form__checkbox"><input type="checkbox" name="drinks" value="whiskey"> Виски</label>
+            <label class="rsvp-form__checkbox"><input type="checkbox" name="drinks" value="vodka"> Водка</label>
+          </fieldset>
+
+          <label class="rsvp-form__label">
+            Если есть, что добавить, напишите ниже
+            <textarea class="rsvp-form__textarea" name="note" rows="3"></textarea>
+          </label>
+
+          <button class="rsvp-form__submit" type="submit">Отправить</button>
+        </form>
+      </div>
+
+      <div class="rsvp-form__thanks" id="rsvp-thanks" hidden>
+        <p>Спасибо! Мы получили ваш ответ и очень ждём встречи с вами 💛</p>
+      </div>
+    </div>
+  </div>
 
 
   <section class="section outro" id="outro">
